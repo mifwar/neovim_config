@@ -3,7 +3,23 @@
 -- Add any additional keymaps here
 
 local keymap = vim.keymap
+
+-- exit insert mode
 keymap.set("i", "jk", "<ESC>")
+
+-- toggle wrap
+local function toggle_wrap()
+  local wrap_is_on = vim.wo.wrap
+  if wrap_is_on then
+    vim.wo.wrap = false
+    print("Wrap: OFF")
+  else
+    vim.wo.wrap = true
+    print("Wrap: ON")
+  end
+end
+
+keymap.set("n", "<leader>w", toggle_wrap, { desc = "Toggle wrap" })
 
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
