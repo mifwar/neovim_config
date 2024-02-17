@@ -1,32 +1,11 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+-- set leader key to space
+vim.g.mapleader = " "
 
 local keymap = vim.keymap
+-- General Keymaps
 
 -- exit insert mode
-keymap.set("i", "jk", "<ESC>")
-
--- toggle wrap
-local function toggle_wrap()
-  local wrap_is_on = vim.wo.wrap
-  if wrap_is_on then
-    vim.wo.wrap = false
-    print("Wrap: OFF")
-  else
-    vim.wo.wrap = true
-    print("Wrap: ON")
-  end
-end
-
-keymap.set("n", "<leader>w", toggle_wrap, { desc = "Toggle wrap" })
-
--- telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>")
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
-keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
+keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
@@ -36,6 +15,7 @@ keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>sz", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
+keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<CR>", { desc = "Maximize/minimize a split" })
 
 -- new tab
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
